@@ -7,47 +7,77 @@
     <link rel="stylesheet" href="../static/css/main.css" />
   </head>
   <body>
-    <div class="div">
-      <div class="frame-2">
-        <div class="frame-3">
-          <div class="div2">
-            <div class="frame-5"></div>
+    <div class="page-wrapper">
+      <header class="main-header">
+        <div class="header-content">
+          <div class="menu-button-placeholder">
+            <div class="menu-icon"></div>
           </div>
         </div>
-        <img class="logo" src="logo0.svg" />
-      </div>
-      <div class="div3">
-        <div class="div4">
-          <div class="div5">확인</div>
+        <img class="logo" src="logo0.svg" alt="SMART-MAPPER 로고" />
+      </header>
+
+      <section class="modal-container">
+        <div class="modal alert-modal is-active" id="alertModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div class="modal-title">경고!</div>
+            </div>
+            <div class="modal-body">
+              <p class="modal-message">
+                회원가입은 취소할 수 없습니다.
+                <br />
+                계속하시겠습니까?
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-confirm">확인</button>
+            </div>
+          </div>
         </div>
-        <div class="div6">경고!</div>
-        <div class="div7">
-          회원가입은 취소할 수 없습니다.
-          <br />
-          계속하시겠습니까?
+
+        <div class="modal welcome-modal" id="loginModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div class="modal-title">환영합니다!</div>
+            </div>
+            <div class="modal-body">
+              <p class="modal-message">로그인하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-confirm">확인</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="div8">
-        <div class="div9">환영합니다!</div>
-        <div class="div10">로그인하시겠습니까?</div>
-        <div class="frame-6">
-          <div class="div5">확인</div>
+
+        <div class="modal navigation-modal" id="mapMoveModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div class="modal-title">이동</div>
+            </div>
+            <div class="modal-body">
+              <p class="modal-message">지도 화면으로 이동하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-confirm">확인</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="div11">
-        <div class="div12">이동</div>
-        <div class="div13">지도 화면으로 이동하시겠습니까?</div>
-        <div class="frame-6">
-          <div class="div5">확인</div>
+
+        <div class="modal navigation-modal" id="mainMoveModal">
+          <div class="modal-box">
+            <div class="modal-header">
+              <div class="modal-title">이동</div>
+            </div>
+            <div class="modal-body">
+              <p class="modal-message">메인 화면으로 이동하시겠습니까?</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-confirm">확인</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="div14">
-        <div class="div12">이동</div>
-        <div class="div13">메인 화면으로 이동하시겠습니까?</div>
-        <div class="frame-6">
-          <div class="div5">확인</div>
-        </div>
-      </div>
+      </section>
     </div>
   </body>
 </html>
