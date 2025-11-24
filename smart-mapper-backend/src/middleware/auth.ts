@@ -1,6 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 import { logger } from '../utils/logger';
 
+interface JwtPayload {
+  userId: string;
+}
+
+// Original auth middleware (API key or simple token)
 export function authMiddleware(req: Request, res: Response, next: NextFunction): void {
   const apiKey = req.headers['x-api-key'] as string;
   const authHeader = req.headers.authorization;
@@ -17,7 +23,9 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction):
 
   if (authHeader && authHeader.startsWith('Bearer ')) {
     const token = authHeader.substring(7);
-    if (validateToken(token)) {
+    const decoded = verifyToken(token);
+    if (decoded) {
+      (req as any).userId = decoded.userId;
       next();
       return;
     }
@@ -35,14 +43,46 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction):
   });
 }
 
-function validateToken(token: string): boolean {
+// JWT-specific auth middleware
+export function jwtAuthMiddleware(req: Request, res: Response, next: NextFunction): void {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    res.status(401).json({
+      success: false,
+      error: 'No token provided'
+    });
+    return;
+  }
+
+  const token = authHeader.substring(7);
+  const decoded = verifyToken(token);
+
+  if (!decoded) {
+    res.status(401).json({
+      success: false,
+      error: 'Invalid or expired token'
+    });
+    return;
+  }
+
+  (req as any).userId = decoded.userId;
+  next();
+}
+
+// Verify JWT token
+function verifyToken(token: string): JwtPayload | null {
   try {
-    return token === process.env.JWT_SECRET;
-  } catch {
-    return false;
+    const secret = process.env.JWT_SECRET || 'default-secret-key';
+    const decoded = jwt.verify(token, secret) as JwtPayload;
+    return decoded;
+  } catch (error) {
+    logger.debug('Token verification failed:', error);
+    return null;
   }
 }
 
+// WebSocket auth middleware
 export function wsAuthMiddleware(socket: any, next: (err?: Error) => void): void {
   const token = socket.handshake.auth.token || socket.handshake.query.token;
 
@@ -51,9 +91,20 @@ export function wsAuthMiddleware(socket: any, next: (err?: Error) => void): void
     return;
   }
 
-  if (token && (token === process.env.API_KEY || token === process.env.JWT_SECRET)) {
-    next();
-    return;
+  if (token) {
+    // Check API key
+    if (token === process.env.API_KEY) {
+      next();
+      return;
+    }
+
+    // Check JWT
+    const decoded = verifyToken(token);
+    if (decoded) {
+      socket.userId = decoded.userId;
+      next();
+      return;
+    }
   }
 
   logger.warn('Unauthorized WebSocket connection attempt', {

@@ -10,6 +10,7 @@ import { connectDatabase } from './config/database';
 import { setupWebSocket } from './config/websocket';
 import { connectRedis } from './config/redis';
 import apiRoutes from './routes/api';
+import authRoutes from './routes/auth';
 import { errorHandler } from './middleware/errorHandler';
 import { requestLogger } from './middleware/requestLogger';
 import { rateLimiter } from './middleware/rateLimiter';
@@ -67,6 +68,7 @@ class SmartMapperServer {
 
     this.app.get('/metrics', metricsEndpoint);
     this.app.use('/api', apiRoutes);
+    this.app.use('/api/auth', authRoutes);
     this.app.use(errorHandler);
   }
 
