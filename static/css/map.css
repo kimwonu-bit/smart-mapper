@@ -1,9 +1,13 @@
-* {
+/* 글로벌 설정 */
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+/* ⭐ body */
 body {
   background-color: #0a0a0a;
   margin: 0;
@@ -13,6 +17,7 @@ body {
   overflow: hidden;
 }
 
+/* ⭐ 메인 래퍼 */
 .main-wrapper {
   background: #0a0a0a;
   width: 2560px;
@@ -26,6 +31,7 @@ body {
   z-index: 1;
 }
 
+/* ⭐ 메인 프레임 */
 .main-frame {
   background: #1a1a1a;
   border-radius: 40px;
@@ -62,6 +68,7 @@ body {
   display: block;
 }
 
+/* ⭐ 콘텐츠 영역 */
 .content-area {
   background: #333333;
   border-radius: 40px;
@@ -73,7 +80,9 @@ body {
   overflow: hidden;
 }
 
-/* 모달 오버레이 */
+/* ---------------------------------------------------- */
+/* ⭐ 모달 오버레이 (두 번째 코드 스타일 반영) */
+/* ---------------------------------------------------- */
 .screen {
   position: fixed;
   top: 0;
@@ -81,42 +90,52 @@ body {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.7);
-  display: none;
+  display: flex; /* 항상 flex, 하지만 pointer-events로 제어 */
   align-items: center;
   justify-content: center;
   z-index: 1000;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
+/* 🔥 show 상태 */
 .screen.show {
-  display: flex;
   opacity: 1;
+  pointer-events: auto;
 }
 
-/* 모달 */
+/* ---------------------------------------------------- */
+/* ⭐ 모달 (두 번째 코드의 애니메이션 구조 적용) */
+/* ---------------------------------------------------- */
+
 .modal {
   background: #2c2c2c;
   border-radius: 20px;
   width: 540px;
   height: 310px;
   overflow: hidden;
-  position: relative;
-  /* (1) 초기 위치: translate(-50%, Y축)를 사용해 Y축 아래로 이동시키기 */
-  transform: translate(-50%, 150%) scale(1);
-  /* 기존 transform: scale(0.9); 삭제 */
-  /* (2) 중앙 정렬을 위해 position을 기준으로 left/top도 설정해야 합니다. */
-  position: absolute; /* .screen의 자식이므로 absolute로 위치 지정 */
+  position: fixed;
   left: 50%;
   top: 50%;
-  /* (3) transition 속성 조정: transform만 부드럽게 전환 */
+  z-index: 1001;
+
+  /* 초기값: 화면 아래쪽에서 등장하는 애니메이션 */
+  transform: translate(-50%, 100vh) scale(0.9);
+  opacity: 0;
+
   transition: transform 0.4s ease-out, opacity 0.4s ease-out;
 }
 
+/* 🔥 활성화된 모달 */
 .screen.show .modal {
-  /* 활성화 상태: 중앙 정렬 위치로 복귀 */
   transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
 }
+
+/* ---------------------------------------------------- */
+/* 모달 내부 텍스트 및 버튼 */
+/* ---------------------------------------------------- */
 
 .modal-title {
   color: #00d0ff;
