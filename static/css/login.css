@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #0a0a0a;
+  height: 100vh;
+  overflow: hidden;
+  font-family: Inter, sans-serif;
+}
+
+a {
+  color: white;
+}
+
+/* 로그인 전체 박스 */
+.login-wrap {
+  width: 680px;
+  height: 708px;
+  background: #1a1a1a;
+  border-radius: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* 로고 */
+.logo {
+  width: 142px;
+  height: 101px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+/* 입력 필드 묶음 */
+.input-area {
+  margin-top: 60px;
+}
+
+.input-box {
+  width: 484px;
+  height: 78px;
+  background: #333;
+  border-radius: 15px;
+  margin: 25px auto;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.input-box span {
+  color: rgba(204, 204, 204, 0.5);
+  font-size: 30px;
+  position: absolute;
+  left: 20px;
+  top: 21px;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+  width: 168px;
+  height: 73px;
+  background: linear-gradient(180deg, #0ff, #0077ff);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 30px;
+  margin: 40px auto 0;
+  margin-bottom: 30px;
+}
+.login-btn:hover {
+  background: linear-gradient(180deg, #0196ff 0%, #022cff 100%);
+}
+
+.register-text {
+  margin-top: 20px;
+  font-size: 18px;
+  color: white;
+}
+
+/* 모달 (요청한 디자인 적용) */
+.modal {
+  width: 540px;
+  height: 310px;
+  background: #2c2c2c;
+  border-radius: 20px;
+
+  position: fixed;
+  left: 50%;
+  top: 120%; /* 화면 아래 대기 */
+  transform: translate(-50%, -50%);
+
+  transition: 0.45s ease;
+  overflow: hidden;
+}
+
+.modal.active {
+  top: 50%; /* 화면 중앙 */
+}
+
+/* 제목 */
+.modal-title {
+  color: #00d0ff;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 27px;
+}
+
+/* 본문 */
+.modal-text {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  margin-top: 90px;
+}
+
+/* 확인 버튼 */
+.modal-btn {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 248, 255, 1) 0%,
+    rgba(1, 123, 255, 1) 100%
+  );
+  border-radius: 15px;
+  width: 514px;
+  height: 60px;
+
+  position: absolute;
+  left: 13px;
+  top: 239px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+  font-size: 30px;
+  font-family: "Inter-Regular", sans-serif;
+  cursor: pointer;
+
+  /* 여기만 변경 */
+  transition: all 3s ease;
+}
+
+.modal-btn:hover {
+  background: linear-gradient(180deg, #0196ff 0%, #022cff 100%);
+}
