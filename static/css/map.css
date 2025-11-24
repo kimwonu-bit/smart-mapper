@@ -1,0 +1,172 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0a0a0a;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+}
+
+.main-wrapper {
+  background: #0a0a0a;
+  width: 2560px;
+  height: 1664px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.65);
+  transform-origin: center center;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.main-frame {
+  background: #1a1a1a;
+  border-radius: 40px;
+  width: 1920px;
+  height: 1080px;
+  position: absolute;
+  left: 320px;
+  top: 292px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 143px;
+}
+
+.logo-container {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute;
+  top: 25px;
+}
+
+.logo-container:hover {
+  transform: scale(1.05);
+}
+
+.logo-container svg {
+  width: 130px;
+  height: 93px;
+  display: block;
+}
+
+.content-area {
+  background: #333333;
+  border-radius: 40px;
+  width: 1820px;
+  height: 910px;
+  position: absolute;
+  left: 50px;
+  top: 141px;
+  overflow: hidden;
+}
+
+/* 모달 오버레이 */
+.screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.screen.show {
+  display: flex;
+  opacity: 1;
+}
+
+/* 모달 */
+.modal {
+  background: #2c2c2c;
+  border-radius: 20px;
+  width: 540px;
+  height: 310px;
+  overflow: hidden;
+  position: relative;
+  /* (1) 초기 위치: translate(-50%, Y축)를 사용해 Y축 아래로 이동시키기 */
+  transform: translate(-50%, 150%) scale(1);
+  /* 기존 transform: scale(0.9); 삭제 */
+  /* (2) 중앙 정렬을 위해 position을 기준으로 left/top도 설정해야 합니다. */
+  position: absolute; /* .screen의 자식이므로 absolute로 위치 지정 */
+  left: 50%;
+  top: 50%;
+  /* (3) transition 속성 조정: transform만 부드럽게 전환 */
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out;
+}
+
+.screen.show .modal {
+  /* 활성화 상태: 중앙 정렬 위치로 복귀 */
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.modal-title {
+  color: #00d0ff;
+  font-family: "Inter-Bold", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 27px;
+}
+
+.modal-message {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 30px;
+  font-weight: 500;
+  position: absolute;
+  top: 137px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.btn-confirm {
+  background: linear-gradient(180deg, #01f8ff 0%, #017bff 100%);
+  border: none;
+  border-radius: 15px;
+  width: 514px;
+  height: 60px;
+  position: absolute;
+  left: 13px;
+  top: 239px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-confirm:hover {
+  background: linear-gradient(180deg, #0196ff 0%, #022cff 100%);
+}
+
+.btn-confirm:active {
+  transform: translateY(0);
+}

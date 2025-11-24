@@ -1,207 +1,193 @@
-/* 글로벌 설정 및 박스 모델 */
-.page-wrapper,
-.page-wrapper * {
+/* 글로벌 설정 */
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
-/* 1. 기본 레이아웃 및 배경 (이전의 .div) */
-.page-wrapper {
-  background: #0a0a0a;
-  min-height: 100vh; /* 화면 높이에 맞게 설정 */
-  position: relative;
+/* ⭐ 1. 기본 배경 및 중앙 강제 정렬 (body) */
+body {
+  background-color: #0a0a0a;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
   overflow: hidden;
-  display: flex; /* 자식 요소 배치를 위해 flex 사용 */
-  justify-content: center;
-  align-items: center;
 }
 
-/* 2. 메인 화면 컨테이너 (이전의 .frame-2) */
-/* 화면 중앙에 배치되는 주 컨테이너 역할 */
-.main-container {
+/* ⭐ 2. 최상위 컨테이너 (.main-wrapper) - 중앙 고정 및 스케일 적용 */
+.main-wrapper {
+  background: #0a0a0a;
+  width: 2560px; /* 원본 디자인 너비 */
+  height: 1664px; /* 원본 디자인 높이 */
+  position: fixed; /* 뷰포트를 기준으로 위치 고정 */
+  top: 50%; /* 뷰포트 세로 50% 지점 */
+  left: 50%; /* 뷰포트 가로 50% 지점 */
+
+  /* 💡 핵심: 요소의 중심을 뷰포트 중심과 일치시킨 후 축소 */
+  transform: translate(-50%, -50%) scale(0.65);
+  transform-origin: center center;
+
+  overflow: hidden; /* 내부 요소는 이 컨테이너 크기에 맞춰 잘림 */
+  z-index: 1; /* 다른 요소 위에 표시 */
+}
+
+/* 3. 메인 화면 (.camera-container) */
+.camera-container {
   background: #1a1a1a;
   border-radius: 40px;
   width: 1920px;
   height: 1080px;
-  position: relative; /* 모달의 absolute 기준이 될 수 있도록 설정 */
+  position: absolute;
+  left: 320px;
+  top: 292px;
   overflow: hidden;
-  /* 실제 화면에 맞게 비율 조정이 필요하다면 여기에 transform: scale() 적용 가능 */
 }
 
-/* 3. 내부 메인 영역 (이전의 .frame-3) */
-.main-content {
+/* 4. 카메라 화면 (.camera-screen) */
+.camera-screen {
   background: #333333;
   border-radius: 40px;
-  width: calc(100% - 100px); /* 1820px 대신 relative width 사용 */
-  height: calc(100% - 282px); /* 910px 대신 relative height 사용 */
-  margin: 141px 50px;
-  overflow: hidden;
-  aspect-ratio: 2 / 1;
-  position: relative;
-}
-
-/* 4. 헤더 및 로고 섹션 */
-.main-header {
+  width: 1820px;
+  height: 910px;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 50px; /* 로고와 메뉴 위치를 기준으로 패딩 설정 */
+  left: 50px;
+  top: 141px;
+  overflow: hidden;
+  aspect-ratio: 2/1;
 }
 
-.logo {
-  width: 130px;
-  height: 93px;
-  margin: 0 auto; /* 로고를 중앙에 배치 */
-  overflow: visible;
-  aspect-ratio: 130 / 93;
-}
-
-/* 메뉴 아이콘 또는 사용자 프로필 영역 (이전의 .div2, .frame-5) */
-.profile-area {
+/* 5. 미니맵 컨테이너 (.map-container) - 클릭 이벤트 타겟 */
+.map-container {
   background: #212121;
   border-radius: 15px;
   width: 240px;
   height: 240px;
-  position: absolute; /* .main-content 내부에서의 위치 */
+  position: absolute;
+  left: 1536px;
   top: 37px;
-  right: 50px;
   overflow: hidden;
   aspect-ratio: 1;
+  cursor: pointer;
+  transition: all 0.6s;
 }
-
-.profile-image-placeholder {
+.map-container:hover {
+  border-radius: 15px;
+  background: #212121;
+  box-shadow: 0 0 30px -1px #0a0a0a;
+  transform: scale(1.05);
+}
+.map-screen {
   background: #6f6f6f;
   border-radius: 15px;
   width: 200px;
   height: 200px;
-  margin: 20px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
   overflow: hidden;
   aspect-ratio: 1;
 }
 
-/* 5. 모달 공통 스타일 (.modal-container 내부의 모달들) */
-.modal-container {
-  /* 모달들을 감싸는 컨테이너. 여기서는 모든 모달이 중앙에 겹치도록 설정 */
+/* 6. 로고 (SVG) 위치 조정 */
+.logo {
+  width: 130px;
+  height: 93px;
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  pointer-events: none; /* 기본적으로 비활성화 */
+  left: 895px;
+  top: 25px;
+  overflow: visible;
+  aspect-ratio: 130/93;
 }
 
-.modal {
-  background-color: rgba(0, 0, 0, 0.6); /* 배경 반투명 오버레이 */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none; /* 기본적으로 숨김 */
-  justify-content: center;
-  align-items: center;
-}
+/* ---------------------------------------------------- */
+/* ⭐ 7. 지도 이동 모달 스타일 및 애니메이션 설정 (map-moving-modal) */
+/* ---------------------------------------------------- */
 
-.modal.is-active {
-  display: flex; /* 활성화 시 보이게 설정 */
-  pointer-events: auto;
-}
-
-.modal-box {
+.map-moving-modal {
   background: #2c2c2c;
   border-radius: 20px;
   width: 540px;
   height: 310px;
   overflow: hidden;
-  position: relative;
+  z-index: 1000;
+  position: fixed; /* 뷰포트 기준으로 중앙 고정 */
+  top: 50%;
+  left: 50%;
+  transition: transform 200ms ease-out, opacity 200ms ease-out;
+  opacity: 0;
+  pointer-events: none; /* 클릭 이벤트 막기 */
 }
 
-/* 모달 헤더 (제목) */
-.modal-header {
-  padding: 27px 20px 10px;
-  text-align: center;
+.map-moving-modal.modal-initial {
+  /* 중앙 정렬 (-50%, -50%)에서 Y축을 더 내려서 화면 아래로 숨김 */
+  transform: translate(-50%, 100vh) scale(0.9);
+  opacity: 0;
 }
 
-.modal-title {
+/* ⭐ 활성 상태 (중앙으로 올라옴) */
+.map-moving-modal.is-visible {
+  /* 중앙 정렬 위치로 복귀 */
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  pointer-events: auto; /* 클릭 이벤트 허용 */
+}
+
+/* 모달 내부 요소 */
+.map-moving-modal-title {
+  color: #00d0ff;
   font-family: "Inter-Bold", sans-serif;
   font-size: 36px;
   font-weight: 700;
-  position: relative;
-}
-
-/* 모달 본문 (메시지) */
-.modal-body {
-  padding: 10px 20px;
+  position: absolute;
+  /* left: 236px -> 중앙 정렬로 변경 */
+  width: 100%;
   text-align: center;
+  top: 27px;
 }
-
-.modal-message {
+.map-moving-modal-text {
   color: #ffffff;
+  text-align: center;
   font-family: "Inter-Medium", sans-serif;
   font-size: 30px;
   font-weight: 500;
-  margin: 0;
-  line-height: 1.4;
-}
-
-/* 모달 푸터 (버튼 영역) */
-.modal-footer {
   position: absolute;
-  bottom: 13px;
-  left: 13px;
-  width: calc(100% - 26px);
-  height: 60px;
-}
-
-/* 버튼 스타일 (이전의 .div5) */
-.btn {
-  border-radius: 15px;
+  /* left: 61px -> 중앙 정렬에 맞게 width/padding 사용 */
+  top: 137px;
   width: 100%;
-  height: 100%;
-  font-family: "Inter-Regular", sans-serif;
-  font-size: 30px;
-  font-weight: 400;
-  color: #ffffff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  cursor: pointer;
+  padding: 0 20px;
 }
-
-/* 6. 모달별 세부 스타일 */
-
-/* 6-1. 경고 모달 (빨간색) - 이전의 .div3 */
-.alert-modal .modal-title {
-  color: #ff5757; /* 이전의 .div6 */
-}
-
-.alert-modal .btn-confirm {
-  /* 이전의 .div4 */
-  background: linear-gradient(
-    180deg,
-    rgba(255, 87, 87, 1) 0%,
-    rgba(255, 13, 13, 1) 100%
-  );
-}
-
-/* 6-2. 정보/이동 모달 (파란색) - 이전의 .div8, .div11, .div14 */
-.welcome-modal .modal-title,
-.navigation-modal .modal-title {
-  color: #00d0ff; /* 이전의 .div9, .div12 */
-}
-
-.welcome-modal .btn-confirm,
-.navigation-modal .btn-confirm {
-  /* 이전의 .frame-6 */
+.map-moving-modal-OK-btn {
   background: linear-gradient(
     180deg,
     rgba(1, 248, 255, 1) 0%,
     rgba(1, 123, 255, 1) 100%
   );
+  border-radius: 15px;
+  width: 514px;
+  height: 60px;
+  position: absolute;
+  left: 13px;
+  top: 239px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 3s;
+}
+
+.map-moving-modal-OK-btn:hover {
+  cursor: pointer;
+  background: linear-gradient(180deg, #0196ff 0%, #022cff 100%);
+}
+.map-moving-modal-OK-btn-text {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+}
+a {
+  text-decoration: none;
+  color: #ffffff;
 }

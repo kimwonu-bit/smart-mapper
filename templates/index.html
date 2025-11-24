@@ -7,77 +7,56 @@
     <link rel="stylesheet" href="../static/css/main.css" />
   </head>
   <body>
-    <div class="page-wrapper">
-      <header class="main-header">
-        <div class="header-content">
-          <div class="menu-button-placeholder">
-            <div class="menu-icon"></div>
+    <div class="main-wrapper">
+      <div class="camera-container">
+        <div class="camera-screen">
+          <div class="map-container">
+            <div class="map-screen"></div>
           </div>
         </div>
-        <img class="logo" src="logo0.svg" alt="SMART-MAPPER 로고" />
-      </header>
-
-      <section class="modal-container">
-        <div class="modal alert-modal is-active" id="alertModal">
-          <div class="modal-box">
-            <div class="modal-header">
-              <div class="modal-title">경고!</div>
-            </div>
-            <div class="modal-body">
-              <p class="modal-message">
-                회원가입은 취소할 수 없습니다.
-                <br />
-                계속하시겠습니까?
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-confirm">확인</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal welcome-modal" id="loginModal">
-          <div class="modal-box">
-            <div class="modal-header">
-              <div class="modal-title">환영합니다!</div>
-            </div>
-            <div class="modal-body">
-              <p class="modal-message">로그인하시겠습니까?</p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-confirm">확인</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal navigation-modal" id="mapMoveModal">
-          <div class="modal-box">
-            <div class="modal-header">
-              <div class="modal-title">이동</div>
-            </div>
-            <div class="modal-body">
-              <p class="modal-message">지도 화면으로 이동하시겠습니까?</p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-confirm">확인</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="modal navigation-modal" id="mainMoveModal">
-          <div class="modal-box">
-            <div class="modal-header">
-              <div class="modal-title">이동</div>
-            </div>
-            <div class="modal-body">
-              <p class="modal-message">메인 화면으로 이동하시겠습니까?</p>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-confirm">확인</button>
-            </div>
-          </div>
-        </div>
-      </section>
+        <svg
+          class="logo"
+          xmlns="http://www.w3.org/2000/svg"
+          width="142"
+          height="101"
+          viewBox="0 0 142 101"
+          fill="none"
+        >
+          <path
+            d="M66.8613 47.4199C84.0631 57.6199 83.0904 71.3821 80.6562 79.4775C76.9236 90.487 66.3745 95.8304 61.3438 97.6113C51.4769 101.886 34.1885 101.228 26.7773 100.364C17.5597 100.105 5.0852 94.6438 0 91.9453C22.7197 96.1548 38.2991 85.3604 45.1152 78.8301C52.6452 73.0015 62.6959 55.4615 66.8613 47.4199ZM115.548 20.2197C116.333 20.2391 133.509 72.4667 142 98.583H123.662L113.113 67.0107C112.594 64.4206 111.058 61.83 110.354 60.8584L101.591 44.3438L115.548 20.2197ZM29.2119 70.7354C31.4846 72.6781 37.9214 75.053 41.0586 76.2402C31.9707 84.1735 25.2625 86.6018 23.3691 86.7637C23.6938 84.9825 27.4808 75.3768 29.2119 70.7354ZM79.0332 25.0771C80.9822 25.8568 100.618 54.2206 107.596 67.0107L98.3447 82.5537C97.4519 80.8996 94.9574 77.0436 92.1758 72.8574C86.9969 65.0634 83.3066 55.3406 76.3682 49.0615C73.8046 46.7416 71.1047 44.7034 69.1338 43.3721C69.137 42.7192 75.7341 30.9046 79.0332 25.0771ZM53.4746 64.1787C14.7693 45.7504 50.9107 -12.7631 89.459 5.99219C95.4228 8.89386 100.55 12.7903 104.108 17.5498C95.6154 13.0704 77.2007 8.32078 71.4883 25.1592C66.6778 22.9956 57.7924 20.8034 51.6689 24.2881C46.6848 27.1245 45.0867 34.4337 48.8857 38.7295C51.8169 42.0439 56.8551 44.8061 62.5625 47.1787L53.4746 64.1787Z"
+            fill="url(#paint0_linear_1_25)"
+          />
+          <path
+            opacity="0.5"
+            d="M62.6459 47.2269L53.5579 64.2272C13.083 38.4111 46.7707 -8.10446 101.16 16.1807C102.265 16.6384 103.284 17.1196 104.191 17.5978C103.174 17.101 102.163 16.6288 101.16 16.1807C91.9117 12.3504 76.6744 10.1665 71.5717 25.2075C66.7612 23.0438 57.8752 20.8516 51.7517 24.3365C46.7676 27.1245 45.1696 34.4337 48.9687 38.7778C51.8999 42.0923 56.9383 44.8543 62.6459 47.2269Z"
+            fill="black"
+          />
+          <defs>
+            <linearGradient
+              id="paint0_linear_1_25"
+              x1="39.9223"
+              y1="96.1267"
+              x2="92.9723"
+              y2="12.4741"
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0.100962" stop-color="#1F2C7D" />
+              <stop offset="0.485577" stop-color="#2D81B4" />
+              <stop offset="1" stop-color="#24EFE2" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
     </div>
+    <div class="map-moving-modal">
+      <div class="map-moving-modal-title">이동</div>
+      <div class="map-moving-modal-text">지도 화면으로 이동하시겠습니까?</div>
+      <div class="map-moving-modal-OK-btn">
+        <div class="map-moving-modal-OK-btn-text">
+          <a href="map.html">확인</a>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/main.js"></script>
   </body>
 </html>
