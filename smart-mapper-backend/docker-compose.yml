@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: smart-mapper-backend
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongodb:27017/smart-mapper
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - ESP32_HOST=${ESP32_HOST:-192.168.1.100}
+      - ESP32_PORT=${ESP32_PORT:-8080}
+      - JWT_SECRET=${JWT_SECRET:-dev-secret}
+      - API_KEY=${API_KEY:-dev-api-key}
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:5173}
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - smart-mapper-network
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+
+  mongodb:
+    image: mongo:7
+    container_name: smart-mapper-mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - smart-mapper-network
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: smart-mapper-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - smart-mapper-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  mongo-express:
+    image: mongo-express
+    container_name: smart-mapper-mongo-express
+    ports:
+      - "8081:8081"
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017/smart-mapper
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    depends_on:
+      - mongodb
+    networks:
+      - smart-mapper-network
+    profiles:
+      - dev
+
+volumes:
+  mongodb_data:
+  redis_data:
+
+networks:
+  smart-mapper-network:
+    driver: bridge
