@@ -13,8 +13,8 @@ const AdvantagesSection = () => {
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <AdvantageCard 
                             icon={<Gamepad2 size={64} />}
-                            title="Convenient Control"
-                            description="Intuitive steering using gyro sensors or joystick buttons for precise maneuverability in tough terrains."
+                            title="편리한 제어"
+                            description="거친 지형에서도 정밀한 기동이 가능하도록 자이로 센서나 조이스틱 버튼을 사용한 직관적인 조향."
                             color={theme.colors['neon-blue'][5]}
                             delay={0}
                         />
@@ -22,8 +22,8 @@ const AdvantagesSection = () => {
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <AdvantageCard 
                             icon={<Globe size={64} />}
-                            title="Web Connectivity"
-                            description="Real-time data streaming and control via any web browser. No complex software installation required."
+                            title="웹 연결성"
+                            description="웹 브라우저를 통한 실시간 데이터 스트리밍 및 제어. 복잡한 소프트웨어 설치가 필요 없습니다."
                             color={theme.colors['neon-green'][5]}
                             delay={0.2}
                         />

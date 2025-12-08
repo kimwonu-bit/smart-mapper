@@ -34,18 +34,18 @@ const MechanismSection = () => {
             <Stack align="center" mb={80}>
                 <Title order={2} size="3rem" ta="center">
                     <Text component="span" variant="gradient" gradient={{ from: 'white', to: 'neon-blue.4' }} inherit>
-                        Mechanism Flow
+                        매커니즘 흐름
                     </Text>
                 </Title>
-                <Text c="dimmed">Seamless connection from control to visualization.</Text>
+                <Text c="dimmed">제어에서 시각화까지 끊김 없는 연결.</Text>
             </Stack>
         </motion.div>
 
         <Group justify="center" align="center" gap={{ base: 20, md: 40 }} wrap="wrap">
             <StepCard 
                 icon={<Gamepad2 size={40} />} 
-                title="User Control" 
-                subtitle="Gyro Steering" 
+                title="사용자 제어" 
+                subtitle="자이로 조향" 
                 color={theme.colors['neon-blue'][5]}
                 delay={0}
             />
@@ -56,7 +56,7 @@ const MechanismSection = () => {
                 icon={<Car size={40} />} 
                 extraIcon={<Radio size={20} className="animate-pulse" style={{ color: theme.colors['neon-green'][5], position: 'absolute', top: -5, right: -5 }} />}
                 title="SMART-MAPPER" 
-                subtitle="Signal Emitting" 
+                subtitle="신호 송신" 
                 color={theme.colors['neon-green'][5]}
                 delay={0.6}
             />
@@ -65,8 +65,8 @@ const MechanismSection = () => {
 
             <StepCard 
                 icon={<Monitor size={40} />} 
-                title="Web Interface" 
-                subtitle="Map & Video Feed" 
+                title="웹 인터페이스" 
+                subtitle="지도 및 비디오 피드" 
                 color={theme.colors['neon-orange'][5]}
                 delay={1.2}
             />

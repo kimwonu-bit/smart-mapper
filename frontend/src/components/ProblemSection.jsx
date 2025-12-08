@@ -38,10 +38,10 @@ const ProblemSection = () => {
         >
             <Stack align="center" mb={60} gap="xs">
                 <Title order={2} size="3rem" ta="center">
-                    Problem <Text component="span" c="red.6" inherit>Situation</Text>
+                    문제 <Text component="span" c="red.6" inherit>상황</Text>
                 </Title>
                 <Text c="red.2" size="lg" ta="center" maw={600} opacity={0.8}>
-                    Traditional surveying in hazardous environments poses significant risks to human life and incurs high operational costs.
+                    위험한 환경에서의 전통적인 측량 방식은 인명 피해의 위험이 크고 높은 운영 비용이 발생합니다.
                 </Text>
             </Stack>
         </motion.div>
@@ -49,20 +49,20 @@ const ProblemSection = () => {
         <SimpleGrid cols={{ base: 1, md: 3 }} spacing={40}>
           <DangerCard 
             icon={<TriangleAlert size={48} />}
-            title="Danger"
-            description="High risk of accidents in unstable environments like caves or disaster zones."
+            title="위험성"
+            description="동굴이나 재난 지역과 같은 불안정한 환경에서는 사고 위험이 매우 높습니다."
             delay={0}
           />
           <DangerCard 
             icon={<UserX size={48} />}
-            title="Inaccessibility"
-            description="Physical barriers preventing human access to critical survey areas."
+            title="접근 불가"
+            description="물리적 장벽으로 인해 사람이 중요한 측량 지역에 접근하기 어렵습니다."
             delay={0.2}
           />
           <DangerCard 
             icon={<ReceiptText size={48} />}
-            title="High Cost"
-            description="Expensive equipment and personnel requirements for manual surveying."
+            title="높은 비용"
+            description="수동 측량을 위해서는 고가의 장비와 전문 인력이 필요합니다."
             delay={0.4}
           />
         </SimpleGrid>

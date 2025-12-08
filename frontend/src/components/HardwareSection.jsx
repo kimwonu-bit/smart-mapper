@@ -14,7 +14,7 @@ const HardwareSection = () => {
             viewport={{ once: false, margin: "-100px" }}
         >
             <Title order={2} size="3rem" ta="center" mb={60}>
-                Required <Text component="span" variant="gradient" gradient={{ from: 'white', to: 'neon-blue.4' }} inherit>Materials</Text>
+                필요 <Text component="span" variant="gradient" gradient={{ from: 'white', to: 'neon-blue.4' }} inherit>부품</Text>
             </Title>
         </motion.div>
 
@@ -31,15 +31,15 @@ const HardwareSection = () => {
 };
 
 const hardwareItems = [
-    { name: "ESP32 Board", desc: "Main Microcontroller", image: "/static/images/esp32.png" },
-    { name: "FSR Pressure Sensors", desc: "Touch/Force Detection", image: "/static/images/components_v2.png" },
-    { name: "HC-SR04", desc: "Ultrasonic Distance Sensor", image: "/static/images/components_v2.png" },
-    { name: "OV2640 Camera", desc: "Video Streaming Module", image: "/static/images/camera.png" },
-    { name: "Robot Chassis", desc: "Mecanum Wheel Kit", image: "/static/images/components_v2.png" },
-    { name: "L298N Driver", desc: "Dual Motor Controller", image: "/static/images/components_v2.png" },
-    { name: "Servo Motor (SG90)", desc: "Camera Tilt Control", image: "/static/images/components_v2.png" },
-    { name: "Rotary Encoder", desc: "Precise Movement Tracking", image: "/static/images/wheel.png" },
-    { name: "Battery Pack", desc: "Power Supply Unit", image: "/static/images/components_v2.png" },
+    { name: "ESP32 보드", desc: "메인 마이크로컨트롤러", image: "/static/images/esp32.png" },
+    { name: "FSR 압력 센서", desc: "접촉/압력 감지", image: "/static/images/fsr_sensor.png" },
+    { name: "초음파 센서 (HC-SR04)", desc: "거리 측정", image: "/static/images/ultrasonic_sensor.png" },
+    { name: "OV2640 카메라", desc: "비디오 스트리밍 모듈", image: "/static/images/camera.png" },
+    { name: "로봇 섀시", desc: "메카넘 휠 키트", image: "/static/images/robot_chassis.png" },
+    { name: "L298N 드라이버", desc: "듀얼 모터 컨트롤러", image: "/static/images/motor_driver.png" },
+    { name: "서보 모터 (SG90)", desc: "카메라 틸트 제어", image: "/static/images/servo_motor.png" },
+    { name: "로터리 인코더", desc: "정밀 이동 추적", image: "/static/images/rotary_encoder.png" },
+    { name: "배터리 팩", desc: "전원 공급 장치", image: "/static/images/battery_pack.png" },
 ];
 
 const HardwareCard = ({ item, index }) => {

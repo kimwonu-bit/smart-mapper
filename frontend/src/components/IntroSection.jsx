@@ -103,26 +103,26 @@ const IntroSection = () => {
                                 <Stack gap="lg">
                                     <Title order={2} size="3rem">
                                         <Text component="span" variant="gradient" gradient={{ from: 'white', to: 'neon-blue.4' }} inherit>
-                                            Introduction
+                                            프로젝트 소개
                                         </Text>
                                     </Title>
                                     
                                     <Text size="lg" c="dimmed" lh={1.6}>
-                                        SMART-MAPPER is an advanced robotic solution designed to navigate and map dangerous, inaccessible environments. 
-                                        Equipped with Mecanum wheels for omnidirectional movement and a suite of sensors, it serves as a{' '}
-                                        <Text component="span" c="neon-green.4" fw={600}>21st-century surveyor</Text>, 
-                                        minimizing human risk while maximizing data accuracy.
+                                        SMART-MAPPER는 위험하고 접근하기 어려운 환경을 탐색하고 지도를 작성하기 위해 설계된 첨단 로봇 솔루션입니다.
+                                        메카넘 휠을 장착하여 모든 방향으로 이동이 가능하며, 다양한 센서를 통해 
+                                        <Text component="span" c="neon-green.4" fw={600}> 21세기형 측량사</Text>로서 
+                                        인명 피해를 최소화하고 데이터 정확도를 극대화합니다.
                                     </Text>
 
                                     <Grid mt="md">
                                         <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Gamepad2 size={24} />} text="Joystick Control" color="neon-blue.5" />
+                                            <FeatureIcon icon={<Gamepad2 size={24} />} text="조이스틱 제어" color="neon-blue.5" />
                                         </Grid.Col>
                                         <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Map size={24} />} text="Map Generation" color="neon-green.5" />
+                                            <FeatureIcon icon={<Map size={24} />} text="지도 생성" color="neon-green.5" />
                                         </Grid.Col>
                                         <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Video size={24} />} text="Real-time View" color="neon-orange.5" />
+                                            <FeatureIcon icon={<Video size={24} />} text="실시간 뷰" color="neon-orange.5" />
                                         </Grid.Col>
                                     </Grid>
                                 </Stack>
