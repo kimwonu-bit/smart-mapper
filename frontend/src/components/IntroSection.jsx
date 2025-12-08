@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gamepad2, Map, Video } from 'lucide-react';
+import { MapPin, Map, Video } from 'lucide-react';
 import { Container, Grid, Title, Text, Box, Paper, Group, Stack, Image as MantineImage, useMantineTheme } from '@mantine/core';
 
 const IntroSection = () => {
@@ -108,21 +108,17 @@ const IntroSection = () => {
                                     </Title>
                                     
                                     <Text size="lg" c="dimmed" lh={1.6}>
-                                        SMART-MAPPER는 위험하고 접근하기 어려운 환경을 탐색하고 지도를 작성하기 위해 설계된 첨단 로봇 솔루션입니다.
-                                        메카넘 휠을 장착하여 모든 방향으로 이동이 가능하며, 다양한 센서를 통해 
-                                        <Text component="span" c="neon-green.4" fw={600}> 21세기형 측량사</Text>로서 
-                                        인명 피해를 최소화하고 데이터 정확도를 극대화합니다.
+                                        SMART-MAPPER는 초음파 센서를 활용하여 미지의 환경을 스캔하고 지도를 생성합니다.
+                                        이동 중 중요한 지점 발견 시, <Text component="span" c="neon-green.4" fw={600}>버튼 클릭 한 번으로</Text> 
+                                        해당 위치에 핀을 남겨 데이터를 기록할 수 있는 직관적인 탐사 솔루션입니다.
                                     </Text>
 
                                     <Grid mt="md">
-                                        <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Gamepad2 size={24} />} text="조이스틱 제어" color="neon-blue.5" />
+                                        <Grid.Col span={6}>
+                                            <FeatureIcon icon={<Map size={24} />} text="초음파 지도 생성" color="neon-green.5" />
                                         </Grid.Col>
-                                        <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Map size={24} />} text="지도 생성" color="neon-green.5" />
-                                        </Grid.Col>
-                                        <Grid.Col span={4}>
-                                            <FeatureIcon icon={<Video size={24} />} text="실시간 뷰" color="neon-orange.5" />
+                                        <Grid.Col span={6}>
+                                            <FeatureIcon icon={<MapPin size={24} />} text="버튼 핀 포인트" color="neon-blue.5" />
                                         </Grid.Col>
                                     </Grid>
                                 </Stack>

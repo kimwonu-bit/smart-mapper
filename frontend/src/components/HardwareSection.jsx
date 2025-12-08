@@ -31,15 +31,10 @@ const HardwareSection = () => {
 };
 
 const hardwareItems = [
-    { name: "ESP32 보드", desc: "메인 마이크로컨트롤러", image: "/static/images/esp32.png" },
-    { name: "FSR 압력 센서", desc: "접촉/압력 감지", image: "/static/images/fsr_sensor.png" },
+    { name: "푸쉬 버튼", desc: "사용자 입력/제어", image: "/static/images/push_button.png" },
     { name: "초음파 센서 (HC-SR04)", desc: "거리 측정", image: "/static/images/ultrasonic_sensor.png" },
-    { name: "OV2640 카메라", desc: "비디오 스트리밍 모듈", image: "/static/images/camera.png" },
-    { name: "로봇 섀시", desc: "메카넘 휠 키트", image: "/static/images/robot_chassis.png" },
-    { name: "L298N 드라이버", desc: "듀얼 모터 컨트롤러", image: "/static/images/motor_driver.png" },
-    { name: "서보 모터 (SG90)", desc: "카메라 틸트 제어", image: "/static/images/servo_motor.png" },
-    { name: "로터리 인코더", desc: "정밀 이동 추적", image: "/static/images/rotary_encoder.png" },
-    { name: "배터리 팩", desc: "전원 공급 장치", image: "/static/images/battery_pack.png" },
+    { name: "서보 모터 (SG90)", desc: "각도 제어", image: "/static/images/servo_motor.png" },
+    { name: "라즈베리 파이", desc: "메인 컴퓨터", image: "/static/images/raspberry_pi.png" },
 ];
 
 const HardwareCard = ({ item, index }) => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gamepad2, Globe } from 'lucide-react';
+import { MapPin, Scan } from 'lucide-react';
 import { Container, Grid, Title, Text, Paper, Box, Stack, useMantineTheme } from '@mantine/core';
 
 const AdvantagesSection = () => {
@@ -12,18 +12,18 @@ const AdvantagesSection = () => {
                 <Grid gutter={50}>
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <AdvantageCard 
-                            icon={<Gamepad2 size={64} />}
-                            title="편리한 제어"
-                            description="거친 지형에서도 정밀한 기동이 가능하도록 자이로 센서나 조이스틱 버튼을 사용한 직관적인 조향."
+                            icon={<MapPin size={64} />}
+                            title="간편한 핀 기록"
+                            description="복잡한 조작 없이, 버튼 클릭 한 번으로 현재 위치에 핀을 남겨 중요한 정보를 즉시 기록합니다."
                             color={theme.colors['neon-blue'][5]}
                             delay={0}
                         />
                     </Grid.Col>
                     <Grid.Col span={{ base: 12, md: 6 }}>
                         <AdvantageCard 
-                            icon={<Globe size={64} />}
-                            title="웹 연결성"
-                            description="웹 브라우저를 통한 실시간 데이터 스트리밍 및 제어. 복잡한 소프트웨어 설치가 필요 없습니다."
+                            icon={<Scan size={64} />}
+                            title="정밀 초음파 지도"
+                            description="초음파 센서의 정밀한 거리 측정을 통해 시야가 확보되지 않는 환경에서도 정확한 지형 지도를 생성합니다."
                             color={theme.colors['neon-green'][5]}
                             delay={0.2}
                         />

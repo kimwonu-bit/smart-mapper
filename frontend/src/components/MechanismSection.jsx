@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gamepad2, Radio, Monitor, ArrowRight, Car } from 'lucide-react';
+import { Radio, Map, MapPin, ArrowRight, Car } from 'lucide-react';
 import { Container, Title, Text, Group, Paper, Box, Stack, useMantineTheme } from '@mantine/core';
 
 const MechanismSection = () => {
@@ -43,9 +43,9 @@ const MechanismSection = () => {
 
         <Group justify="center" align="center" gap={{ base: 20, md: 40 }} wrap="wrap">
             <StepCard 
-                icon={<Gamepad2 size={40} />} 
-                title="사용자 제어" 
-                subtitle="자이로 조향" 
+                icon={<Radio size={40} />} 
+                title="초음파 스캔" 
+                subtitle="지형 거리 측정" 
                 color={theme.colors['neon-blue'][5]}
                 delay={0}
             />
@@ -53,10 +53,10 @@ const MechanismSection = () => {
             <ConnectionArrow color={theme.colors['neon-blue'][5]} delay={0.3} />
 
             <StepCard 
-                icon={<Car size={40} />} 
-                extraIcon={<Radio size={20} className="animate-pulse" style={{ color: theme.colors['neon-green'][5], position: 'absolute', top: -5, right: -5 }} />}
-                title="SMART-MAPPER" 
-                subtitle="신호 송신" 
+                icon={<Map size={40} />} 
+                extraIcon={<Car size={20} className="animate-pulse" style={{ color: theme.colors['neon-green'][5], position: 'absolute', top: -5, right: -5 }} />}
+                title="지도 데이터 변환" 
+                subtitle="실시간 좌표 매핑" 
                 color={theme.colors['neon-green'][5]}
                 delay={0.6}
             />
@@ -64,9 +64,9 @@ const MechanismSection = () => {
             <ConnectionArrow color={theme.colors['neon-blue'][5]} delay={0.9} />
 
             <StepCard 
-                icon={<Monitor size={40} />} 
-                title="웹 인터페이스" 
-                subtitle="지도 및 비디오 피드" 
+                icon={<MapPin size={40} />} 
+                title="핀 포인트 기록" 
+                subtitle="버튼으로 중요 위치 저장" 
                 color={theme.colors['neon-orange'][5]}
                 delay={1.2}
             />

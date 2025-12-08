@@ -99,7 +99,7 @@ const HeroSection = () => {
               >
                   <Button 
                     component="a" 
-                    href="/camera"
+                    href="/map"
                     size="xl" 
                     mt={50}
                     radius="md"
